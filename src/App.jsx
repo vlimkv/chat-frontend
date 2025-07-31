@@ -35,7 +35,7 @@ function App() {
         setIsLoading(true);
 
         try {
-            const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+            const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
             const res = await axios.post(`${API_URL}/api/chat`, { message: currentPrompt });
             const aiMessage = { role: 'ai', content: res.data.response };
             setChatHistory(prev => [...prev, aiMessage]);
